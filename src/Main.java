@@ -3,25 +3,23 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Калькулятор.");
-        System.out.println("");
-        /*String ch1 = sc.next();
-        String st = sc.next();
-        String ch2 = sc.next();*/
 
         String line = sc.nextLine();
 
-        String[] strings = line.split(" ");  // splits the string wherever a space character is encountered, returns the result as a String[]
+        System.out.println(calc(line));
+    }
+
+    public static String calc(String line) {
+
+        String[] strings = line.split(" ");
 
         if (strings.length == 1 || strings.length == 2) {
 
-            System.out.println("Cтрока не является математической операцией");
-            System.exit(1);
+            throw new IllegalArgumentException();
 
         } else if (strings.length > 3) {
 
-            System.out.println("Формат математической операции не удовлетворяет заданию");
-            System.exit(1);
+            throw new IllegalArgumentException();
         }
 
         String ch1 = String.format(strings[0]);
@@ -29,22 +27,21 @@ public class Main {
         String ch2 = String.format(strings[2]);
 
 
-
         int x = 0;
         int y = 0;
         int z = 0;
         int h = 0;
-        int otv = 0;
+        int otv;
 
         if ((ch1.equals("1") || ch1.equals("2") || ch1.equals("3") || ch1.equals("4") || ch1.equals("5") || ch1.equals("6")
                 || ch1.equals("7") || ch1.equals("8") || ch1.equals("9") || ch1.equals("10")) && (ch2.equals("I") || ch2.equals("II")
                 || ch2.equals("III") || ch2.equals("IV") || ch2.equals("V") || ch2.equals("VI") || ch2.equals("VII")
                 || ch2.equals("VIII") || ch2.equals("IX") || ch2.equals("X")) || (ch2.equals("1") || ch2.equals("2")
-                || ch2.equals("3") || ch2.equals("4") || ch2.equals("5") || ch2.equals("6")|| ch2.equals("7")
+                || ch2.equals("3") || ch2.equals("4") || ch2.equals("5") || ch2.equals("6") || ch2.equals("7")
                 || ch2.equals("8") || ch2.equals("9") || ch2.equals("10")) && (ch1.equals("I") || ch1.equals("II")
                 || ch1.equals("III") || ch1.equals("IV") || ch1.equals("V") || ch1.equals("VI") || ch1.equals("VII")
                 || ch1.equals("VIII") || ch1.equals("IX") || ch1.equals("X"))) {
-            System.out.println("Введены разные системы счисления");
+            throw new IllegalArgumentException("Введены разные системы счисления");
         } else if ((!ch1.equals("1") && !ch1.equals("2") && !ch1.equals("3") && !ch1.equals("4") && !ch1.equals("5") && !ch1.equals("6")
                 && !ch1.equals("7") && !ch1.equals("8") && !ch1.equals("9") && !ch1.equals("10")) && (!ch1.equals("I") && !ch1.equals("II")
                 && !ch1.equals("III") && !ch1.equals("IV") && !ch1.equals("V") && !ch1.equals("VI") && !ch1.equals("VII")
@@ -53,7 +50,7 @@ public class Main {
                 && !ch2.equals("VIII") && !ch2.equals("IX") && !ch2.equals("X")) && (!ch2.equals("1") && !ch2.equals("2")
                 && !ch2.equals("3") && !ch2.equals("4") && !ch2.equals("5") && !ch2.equals("6") && !ch2.equals("7")
                 && !ch2.equals("8") && !ch2.equals("9") && !ch2.equals("10"))) {
-            System.out.println("Введено неверное число (меньше 1 || больше 10 || меньше I || больше X)");
+            throw new IllegalArgumentException("Введено неверное число (меньше 1 || больше 10 || меньше I || больше X)");
         } else {
 
             switch (ch1) {
@@ -225,7 +222,7 @@ public class Main {
                     break;
 
                 default:
-                    System.out.println("Ошибка");
+                    throw new IllegalArgumentException("Ошибка");
 
             }
             if (x != 0) {
@@ -233,26 +230,20 @@ public class Main {
 
                     case "+":
                         otv = x + y;
-                        System.out.println(otv);
                         break;
-
                     case "-":
                         otv = x - y;
-                        System.out.println(otv);
                         break;
-
                     case "*":
                         otv = x * y;
-                        System.out.println(otv);
                         break;
 
                     case "/":
                         otv = x / y;
-                        System.out.println(otv);
                         break;
 
                     default:
-                        System.out.println("Знак неверный");
+                        throw new IllegalArgumentException("Знак неверный");
                 }
             } else {
                 switch (st) {
@@ -272,192 +263,129 @@ public class Main {
                     case "/":
                         otv = z / h;
                         break;
-
                     default:
-                        System.out.println("Знак неверный");
+                        throw new IllegalArgumentException("Знак неверный");
                 }
 
                 switch (otv) {
 
                     case -9:
-                        System.out.println("Римское число не может быть отрицательным");
-                        break;
+                        throw new IllegalArgumentException("Римское число не может быть отрицательным");
                     case -8:
-                        System.out.println("Римское число не может быть отрицательным");
-                        break;
+                        throw new IllegalArgumentException("Римское число не может быть отрицательным");
                     case -7:
-                        System.out.println("Римское число не может быть отрицательным");
-                        break;
+                        throw new IllegalArgumentException("Римское число не может быть отрицательным");
                     case -6:
-                        System.out.println("Римское число не может быть отрицательным");
-                        break;
+                        throw new IllegalArgumentException("Римское число не может быть отрицательным");
                     case -5:
-                        System.out.println("Римское число не может быть отрицательным");
-                        break;
+                        throw new IllegalArgumentException("Римское число не может быть отрицательным");
                     case -4:
-                        System.out.println("Римское число не может быть отрицательным");
-                        break;
+                        throw new IllegalArgumentException("Римское число не может быть отрицательным");
                     case -3:
-                        System.out.println("Римское число не может быть отрицательным");
-                        break;
+                        throw new IllegalArgumentException("Римское число не может быть отрицательным");
                     case -2:
-                        System.out.println("Римское число не может быть отрицательным");
-                        break;
+                        throw new IllegalArgumentException("Римское число не может быть отрицательным");
                     case -1:
-                        System.out.println("Римское число не может быть отрицательным");
-                        break;
+                        throw new IllegalArgumentException("Римское число не может быть отрицательным");
                     case 0:
-                        System.out.println("nulla");
-                        break;
+                        return "null";
                     case 1:
-                        System.out.println("I");
-                        break;
+                        return "I";
                     case 2:
-                        System.out.println("II");
-                        break;
+                        return "II";
                     case 3:
-                        System.out.println("III");
-                        break;
+                        return "III";
                     case 4:
-                        System.out.println("IV");
-                        break;
+                        return "IV";
                     case 5:
-                        System.out.println("V");
-                        break;
+                        return "V";
                     case 6:
-                        System.out.println("VI");
-                        break;
+                        return "VI";
                     case 7:
-                        System.out.println("VII");
-                        break;
+                        return "VII";
                     case 8:
-                        System.out.println("VIII");
-                        break;
+                        return "VIII";
                     case 9:
-                        System.out.println("IX");
-                        break;
+                        return "IX";
                     case 10:
-                        System.out.println("X");
-                        break;
+                        return "X";
                     case 11:
-                        System.out.println("XI");
-                        break;
+                        return "XI";
                     case 12:
-                        System.out.println("XII");
-                        break;
+                        return "XII";
                     case 13:
-                        System.out.println("XIII");
-                        break;
+                        return "XIII";
                     case 14:
-                        System.out.println("XIV");
-                        break;
+                        return "XIV";
                     case 15:
-                        System.out.println("XV");
-                        break;
+                        return "XV";
                     case 16:
-                        System.out.println("XVI");
-                        break;
+                        return "XVI";
                     case 17:
-                        System.out.println("XVII");
-                        break;
+                        return "XVII";
                     case 18:
-                        System.out.println("XVIII");
-                        break;
+                        return "XVIII";
                     case 19:
-                        System.out.println("XIX");
-                        break;
+                        return "XIX";
                     case 20:
-                        System.out.println("XX");
-                        break;
+                        return "XX";
                     case 21:
-                        System.out.println("XXI");
-                        break;
+                        return "XXI";
                     case 24:
-                        System.out.println("XXIV");
-                        break;
+                        return "XXIV";
                     case 25:
-                        System.out.println("XXV");
-                        break;
+                        return "XXV";
                     case 27:
-                        System.out.println("XXVII");
-                        break;
+                        return "XXVII";
                     case 28:
-                        System.out.println("XXVIII");
-                        break;
+                        return "XXVIII";
                     case 30:
-                        System.out.println("XXX");
-                        break;
+                        return "XXX";
                     case 32:
-                        System.out.println("XXXII");
-                        break;
+                        return "XXXII";
                     case 35:
-                        System.out.println("XXXV");
-                        break;
+                        return "XXXV";
                     case 36:
-                        System.out.println("XXXVI");
-                        break;
+                        return "XXXVI";
                     case 40:
-                        System.out.println("XL");
-                        break;
+                        return "XL";
                     case 42:
-                        System.out.println("XLII");
-                        break;
+                        return "XLII";
                     case 45:
-                        System.out.println("XLV");
-                        break;
+                        return "XLV";
                     case 48:
-                        System.out.println("XLVIII");
-                        break;
+                        return "XLVIII";
                     case 49:
-                        System.out.println("XLIX");
-                        break;
+                        return "XLIX";
                     case 50:
-                        System.out.println("L");
-                        break;
+                        return "L";
                     case 54:
-                        System.out.println("LIV");
-                        break;
+                        return "LIV";
                     case 56:
-                        System.out.println("LVI");
-                        break;
+                        return "LVI";
                     case 60:
-                        System.out.println("LX");
-                        break;
+                        return "LX";
                     case 63:
-                        System.out.println("LXIII");
-                        break;
+                        return "LXIII";
                     case 64:
-                        System.out.println("LXIV");
-                        break;
+                        return "LXIV";
                     case 70:
-                        System.out.println("LXX");
-                        break;
+                        return "LXX";
                     case 72:
-                        System.out.println("LXXII");
-                        break;
+                        return "LXXII";
                     case 80:
-                        System.out.println("LXXX");
-                        break;
+                        return "LXXX";
                     case 81:
-                        System.out.println("LXXXI");
-                        break;
+                        return "LXXXI";
                     case 90:
-                        System.out.println("XC");
-                        break;
+                        return "XC";
                     case 100:
-                        System.out.println("C");
-                        break;
+                        return "C";
 
                     default:
                 }
             }
         }
-        //else System.out.println("всё ок");
-
-        /*if (st == str2) {
-            otv = ch1 * ch2;
-            System.out.println(otv);
-        } else {
-        System.out.println("error");}*/
+        return String.valueOf(otv);
     }
 }
